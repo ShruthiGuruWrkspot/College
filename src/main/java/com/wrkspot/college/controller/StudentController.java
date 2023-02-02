@@ -1,7 +1,6 @@
 package com.wrkspot.college.controller;
 
 import com.wrkspot.college.entity.Student;
-import com.wrkspot.college.repository.StudentRepo;
 import com.wrkspot.college.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +11,6 @@ import java.util.*;
 public class StudentController {
     @Autowired
     private StudentService studentService;
-    @Autowired
-    private StudentRepo studentRepo;
 
     @PostMapping("/addStudent")
     public Student addStudent(@RequestBody Student student) {
@@ -32,6 +29,10 @@ public class StudentController {
     @GetMapping("/getStudent/{regNumber}")
     public Student getStudentByID(@PathVariable int regNumber) {
         return studentService.getStudentByID(regNumber);
+    }
+    @PutMapping("/updateStudent")
+    public Student updateStudent(@RequestBody Student student) {
+        return studentService.updaStudent(student);
     }
     @DeleteMapping("/deleteStudent/{regNumber}")
     public String deleteByID(@PathVariable int regNumber) {

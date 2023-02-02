@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Service
+@Service // Business logic
 public class StudentService {
-    @Autowired
+    @Autowired // connect with objects of another class
     private StudentRepo studentRepo;
 
     public Student addStudent(Student student) {
@@ -27,6 +27,10 @@ public class StudentService {
 
     public Student getStudentByID(int regNumber) {
         return studentRepo.findById(regNumber).orElse(null);
+    }
+
+    public Student updaStudent(Student updatedStudent) {
+        return studentRepo.save(updatedStudent);
     }
 
     public String deleteByID(int regNumber) {
